@@ -15,17 +15,17 @@ def txt2list(t):
     for info in list_:
         info = info.split('. ')[1]
         infos = info.split('+')
-        try:
-            info_dict = {'id': infos[0].strip(),
-                         'name': infos[1].strip(),
-                         'pos': infos[2].strip(),
-                         'stat': infos[3].strip(),
-                         'temp': infos[4].strip()}
-            if "度" not in info_dict['temp']:
-                info_dict['temp'] = (info_dict['temp'] + '度').strip()
-            lists.append(info_dict)
-        except:
-            AssertionError("Unsplitable text: {}\nPlease check your text format.".format(info))
+        # try:
+        info_dict = {'id': infos[0].strip(),
+                     'name': infos[1].strip(),
+                     'pos': infos[2].strip(),
+                     'stat': infos[3].strip(),
+                     'temp': infos[4].strip()}
+        if "度" not in info_dict['temp']:
+            info_dict['temp'] = (info_dict['temp'] + '度').strip()
+        lists.append(info_dict)
+        # except:
+        #     print("Unsplitable text: {}\nPlease check your text format.".format(info))
 
     return lists
 
@@ -43,7 +43,7 @@ def make_excel(data):
 
     # 数据写入excel
     for row, val in enumerate(data):
-        print(val)
+        # print(val)
         sheet.write(row, 0, val['id'])  # 第二行开始
         sheet.write(row , 1, val['name'])  # 第二行开始
         sheet.write(row , 2, val['pos'])  # 第二行开始
